@@ -365,14 +365,13 @@ class Doorbell():
     def mute_audio_output(self):
         try:
             current_settings = self.get_audio_out_settings()
-
-            currentTalkVolume = current_settings.find('{*}talkVolume')
+            currentTalkVolume = current_settings.find('.//{*}talkVolume')
             if currentTalkVolume is None or currentTalkVolume.text is None:
                 talkVolume = "5"
             else:
                 talkVolume = currentTalkVolume.text
 
-            currentVolume = current_settings.find('{*}volume')
+            currentVolume = current_settings.find('.//{*}volume')
             if currentVolume is None or currentVolume.text is None:
                 self._previouse_audio_out_volume = 5
             else:
@@ -395,7 +394,7 @@ class Doorbell():
     def unmute_audio_output(self):
         try:
             current_settings = self.get_audio_out_settings()
-            currentTalkVolume = current_settings.find('{*}talkVolume')
+            currentTalkVolume = current_settings.find('.//{*}talkVolume')
             if currentTalkVolume is None or currentTalkVolume.text is None:
                 talkVolume = "5"
             else:
